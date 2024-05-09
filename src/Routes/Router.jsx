@@ -14,6 +14,9 @@ import MyList from "../pages/MyList/MyList";
 import UpdateSpot from "../components/UpdateSpot";
 import SelectedSpots from "../pages/SelectedSpots/SelectedSpots";
 import Contact from "../pages/Contact/Contact";
+import AddBooks from "../pages/AddBooks/AddBooks";
+import AllBooks from "../pages/AllBooks/AllBooks";
+import BorrowedBooks from "../pages/BorrowedBooks/BorrowedBooks";
 
 const router = createBrowserRouter([
   {
@@ -24,69 +27,82 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("https://assignment-10-server-inky-theta.vercel.app/spots"),
-
+        loader: () =>
+          fetch("https://assignment-10-server-inky-theta.vercel.app/spots"),
       },
       {
-        path: "/details/:id", 
+        path: "/details/:id",
         element: (
           <PrivateRoute>
             <ViewDetails />
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://assignment-10-server-inky-theta.vercel.app/spots/${params.id}`),
+          fetch(
+            `https://assignment-10-server-inky-theta.vercel.app/spots/${params.id}`
+          ),
       },
       {
-        path: "/addtouristspot",
+        path: "/addBooks",
         element: (
           <PrivateRoute>
-            <AddTouristsSpot></AddTouristsSpot>
+            <AddBooks></AddBooks>
           </PrivateRoute>
         ),
       },
       {
-        path: "/alltouristspots",
-        element: <AllTouristSpots></AllTouristSpots>,
-        loader: () => fetch("https://assignment-10-server-inky-theta.vercel.app/spots"),
+        path: "/borrowedBooks",
+        element: (
+          <PrivateRoute>
+            <BorrowedBooks></BorrowedBooks>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/allBooks",
+        element: (
+          <PrivateRoute>
+            <AllBooks></AllBooks>
+          </PrivateRoute>
+        ),
+        loader: () =>
+          fetch("https://assignment-10-server-inky-theta.vercel.app/spots"),
       },
       {
         path: "/selectedspots/:countryName",
         element: <SelectedSpots></SelectedSpots>,
-        loader: ({ params }) => fetch(`https://assignment-10-server-inky-theta.vercel.app/spots/${params.countryName}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment-10-server-inky-theta.vercel.app/spots/${params.countryName}`
+          ),
       },
-      
+
       {
-        path: "/alltouristspots/details/:id", 
+        path: "/alltouristspots/details/:id",
         element: (
           <PrivateRoute>
             <ViewDetails />
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://assignment-10-server-inky-theta.vercel.app/spots/${params.id}`),
+          fetch(
+            `https://assignment-10-server-inky-theta.vercel.app/spots/${params.id}`
+          ),
       },
+      
       {
-        path: "/list", 
+        path: "update/:id",
         element: (
           <PrivateRoute>
-            <MyList></MyList> 
-          </PrivateRoute>
-        ),
-        loader: () =>
-          fetch(`https://assignment-10-server-inky-theta.vercel.app/user-spots`), 
-      },
-      {
-        path: "update/:id", 
-        element: (
-          <PrivateRoute>
-            <UpdateSpot ></UpdateSpot>
+            <UpdateSpot></UpdateSpot>
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://assignment-10-server-inky-theta.vercel.app/user-spots/${params.id}`),
+          fetch(
+            `https://assignment-10-server-inky-theta.vercel.app/user-spots/${params.id}`
+          ),
       },
-      
+
       {
         path: "/login",
         element: <Login></Login>,

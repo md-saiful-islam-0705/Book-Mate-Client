@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import userDefaultPic from "../../assets/user.png";
+import { GiBookCover } from "react-icons/gi";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -24,18 +25,24 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/alltouristspots" activeClassName="font-bold text-indigo-600">
-          All Tourists Spot
+        <NavLink
+          to="/allBooks"
+          activeClassName="font-bold text-indigo-600"
+        >
+          All Books
         </NavLink>
       </li>
       <li>
-        <NavLink to="/addtouristspot" activeClassName="font-bold text-indigo-600">
-        Add Tourists Spot
+        <NavLink
+          to="/addBooks"
+          activeClassName="font-bold text-indigo-600"
+        >
+          Add Books
         </NavLink>
       </li>
       <li>
-        <NavLink to="/list" activeClassName="font-bold text-indigo-600">
-          My List
+        <NavLink to="/borrowedBooks" activeClassName="font-bold text-indigo-600">
+          Borrowed Books
         </NavLink>
       </li>
       <li>
@@ -57,7 +64,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 flex justify-between items-center py-4 px-8">
+    <div className="navbar bg-base-100 flex justify-between items-center py-4 ">
       <div className="navbar-start">
         <div className="flex items-center">
           <div className="dropdown">
@@ -85,12 +92,14 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/">
-            <h1 className="text-5xl font-extrabold mr-2 hover:bg-gray-100 p-2 rounded-full">
-              <span className="text-gradient bg-gradient-to-r from-violet-600 to-pink-500 text-transparent bg-clip-text">
-                J
-              </span>
-              <span className="text-3xl font-extrabold text-pink-600">J</span>
-            </h1>
+            <div className=" font-bold flex justify-between py-2 pr-2 hover:rounded-md items-center gap-1 hover:bg-gray-100 ">
+              <p className="text-pink-600 text-5xl"><GiBookCover/></p>
+              <div>
+                <h1 className=" md:text-xl text-sm lg:text-xl bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+                  Book Mate
+                </h1>
+              </div>
+            </div>
           </Link>
         </div>
       </div>
