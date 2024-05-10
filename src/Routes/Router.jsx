@@ -5,12 +5,8 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Login from "../pages/LogIn/Login";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
-import About from "../pages/About/About";
 import Profile from "../pages/Profile/Profile";
-import AddTouristsSpot from "../pages/AddTouristsSpot/AddTouristsSpot";
-import AllTouristSpots from "../pages/AllTouristSpots/AllTouristSpots";
 import ViewDetails from "../components/ViewDetails";
-import MyList from "../pages/MyList/MyList";
 import UpdateSpot from "../components/UpdateSpot";
 import SelectedSpots from "../pages/SelectedSpots/SelectedSpots";
 import Contact from "../pages/Contact/Contact";
@@ -28,7 +24,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
         loader: () =>
-          fetch("https://assignment-10-server-inky-theta.vercel.app/spots"),
+          fetch("http://localhost:3001/booksCategory"),
       },
       {
         path: "/details/:id",
@@ -111,10 +107,7 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
-      {
-        path: "/about",
-        element: <About></About>,
-      },
+      
       {
         path: "/contact",
         element: <Contact></Contact>,
