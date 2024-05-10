@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "journey-junction-2024"
-  }
+    "default": "book-mate-2024",
+    "y": "book-mate-2024"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }

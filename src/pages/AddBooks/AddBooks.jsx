@@ -31,7 +31,7 @@ const AddBook = () => {
         icon: "success",
         confirmButtonText: "OK",
       });
-      // Reset form data after successful submission
+      // Reset 
       setFormData({
         image: "",
         name: "",
@@ -117,7 +117,7 @@ const AddBook = () => {
                 name="quantity"
                 value={formData.quantity}
                 onChange={handleChange}
-                placeholder="Quantity"
+                placeholder="Quantity(1/2/3...)"
                 className="input input-bordered"
               />
             </div>

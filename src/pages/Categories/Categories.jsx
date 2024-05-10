@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Reveal } from "react-awesome-reveal";
 import { FaArrowCircleRight } from "react-icons/fa";
+import { FaBookOpen } from "react-icons/fa";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -12,21 +13,29 @@ const Categories = () => {
   }, []);
 
   const fetchCategories = async () => {
-      const response = await fetch("http://localhost:3001/booksCategory");
-      if (!response.ok) {
-        throw new Error("Failed to fetch Categories data");
-      }
-      const data = await response.json();
-      setCategories(data);
-      setLoading(false);
-      setLoading(false);
-    
+    const response = await fetch("http://localhost:3001/booksCategory");
+    if (!response.ok) {
+      throw new Error("Failed to fetch Categories data");
+    }
+    const data = await response.json();
+    setCategories(data);
+    setLoading(false);
   };
 
   return (
     <>
-      <div>
-        <h1 className="text-3xl text-center font-bold my-6">Books Category</h1>
+      <div className="my-6 space-y-1">
+        <h1 className="text-3xl text-center font-bold ">Our Top Categories</h1>
+        <p className="text-center">
+          Here are some of the Top Categories of the Books Available
+        </p>
+        <div className="flex items-center text-center w-96 mx-auto">
+          <hr className="flex-grow border-black" />
+          <div className="mx-2 text-3xl text-black">
+            <FaBookOpen />
+          </div>
+          <hr className="flex-grow border-black" />
+        </div>
       </div>
       {loading ? (
         <div className="flex justify-center space-x-4 my-8">

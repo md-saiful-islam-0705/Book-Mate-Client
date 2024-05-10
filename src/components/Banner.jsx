@@ -14,7 +14,7 @@ const Banner = () => {
           className="w-full"
           alt="Slide 1"
         />
-        <div className="absolute flex flex-col text-xl items-end transform -translate-y-1/2 left-2 lg:left-10 bottom-0 text-white gap-2 lg:gap-3">
+        <div className="absolute flex flex-col text-xl items-end transform -translate-y-1/2 left-2 md:left-5 lg:left-10 bottom-0 text-white gap-2 md:gap-3 lg:gap-3">
           <FaFacebook />
           <FaInstagram />
           <FaYoutube />
