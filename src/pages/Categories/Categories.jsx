@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Reveal } from "react-awesome-reveal";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
+import axios from "axios";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -13,12 +14,8 @@ const Categories = () => {
   }, []);
 
   const fetchCategories = async () => {
-    const response = await fetch("http://localhost:3001/booksCategory");
-    if (!response.ok) {
-      throw new Error("Failed to fetch Categories data");
-    }
-    const data = await response.json();
-    setCategories(data);
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/booksCategory`);
+    setCategories(response.data);
     setLoading(false);
   };
 

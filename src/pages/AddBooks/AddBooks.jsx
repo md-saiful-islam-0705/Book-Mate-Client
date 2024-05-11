@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../shared/Navbar";
 import Footer from "../shared/Footer";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const AddBook = () => {
   const [formData, setFormData] = useState({
@@ -18,20 +19,28 @@ const AddBook = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isValid = validateForm();
     if (isValid) {
-      // Your form submission logic here
-      console.log(formData);
-      // Show success message
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/books`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      // success message
       Swal.fire({
         title: "Success!",
         text: "Book added successfully.",
         icon: "success",
         confirmButtonText: "OK",
       });
-      // Reset 
+      // Reset
       setFormData({
         image: "",
         name: "",
@@ -43,12 +52,20 @@ const AddBook = () => {
       });
     }
   };
-  
 
   const validateForm = () => {
-    const { image, name, quantity, author, category, rating, description } = formData;
+    const { image, name, quantity, author, category, rating, description } =
+      formData;
 
-    if (!image || !name || !quantity || !author || !category || !rating || !description) {
+    if (
+      !image ||
+      !name ||
+      !quantity ||
+      !author ||
+      !category ||
+      !rating ||
+      !description
+    ) {
       Swal.fire({
         title: "Error!",
         text: "Please fill in all fields.",
@@ -75,10 +92,10 @@ const AddBook = () => {
   return (
     <>
       <Navbar />
-      <div className="mx-auto border  p-2 lg:p-5 md:p-4 rounded-md mb-10 shadow">
+      <div className="mx-auto border lg:w-1/3 w-full p-3  rounded-md mb-10 shadow">
         <h2 className="text-3xl text-center font-bold mb-4">Add Book</h2>
         <form
-          className="mx-auto bg-gradient-to-br from-blue-500 to-purple-500 p-3 lg:p-7 md:p-5 shadow-lg rounded-lg"
+          className="mx-auto bg-gradient-to-br from-blue-500 to-purple-500 p-4 lg:p-7 md:p-5 shadow-lg rounded-lg"
           onSubmit={handleSubmit}
         >
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -138,14 +155,20 @@ const AddBook = () => {
               <label className="label">
                 <span className="label-text">Category</span>
               </label>
-              <input
-                type="text"
+              <select
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                placeholder="Category"
-                className="input input-bordered"
-              />
+                className="select select-bordered"
+              >
+                <option value="">Select Category</option>
+                <option value="Travel">Travel</option>
+                <option value="Computer and Tech">Computer and Tech</option>
+                <option value="Business">Business</option>
+                <option value="Health and Fitness">Health and Fitness</option>
+                <option value="Education">Education</option>
+                <option value="Sports">Sports</option>
+              </select>
             </div>
             <div className="form-control">
               <label className="label">
