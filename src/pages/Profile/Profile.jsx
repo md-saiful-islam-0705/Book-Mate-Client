@@ -4,7 +4,6 @@ import Footer from "../shared/Footer";
 import Navbar from "../shared/Navbar";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const { user, updateUserProfile } = useContext(AuthContext);
@@ -32,9 +31,7 @@ const Profile = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Profile - CrestView Properties</title>
-      </Helmet>
+      
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <div className="flex-grow">
