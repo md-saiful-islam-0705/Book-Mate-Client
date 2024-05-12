@@ -14,15 +14,21 @@ const Categories = () => {
   }, []);
 
   const fetchCategories = async () => {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}/booksCategory`);
-    setCategories(response.data);
-    setLoading(false);
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/booksCategory`
+      );
+      setCategories(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
   };
 
   return (
     <>
       <div className="my-6 space-y-1">
-        <h1 className="text-3xl text-center font-bold ">Our Top Categories</h1>
+        <h1 className="text-3xl text-center font-bold">Our Top Categories</h1>
         <p className="text-center">
           Here are some of the Top Categories of the Books Available
         </p>
@@ -42,24 +48,22 @@ const Categories = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {categories.map((booksCategory, index) => (
+          {categories.map((category, index) => (
             <Reveal
-              key={booksCategory._id + index}
+              key={category._id + index}
               cascade
               damping={0.1}
               triggerOnce
             >
-              <Link to={`/selected/${booksCategory.name}`}>
+              <Link to={`/selectedBooks/${category.name}`}>
                 <div className="relative overflow-hidden border rounded-lg transition-transform duration-800 transform hover:-translate-y-1 hover:shadow-xl">
                   <img
-                    src={booksCategory.image}
-                    alt={booksCategory.name}
+                    src={category.image}
+                    alt={category.name}
                     className="w-full h-[300px] object-cover"
                   />
-                  <div className="p-4 flex justify-between items-center ">
-                    <h2 className="text-lg font-bold mb-2">
-                      {booksCategory.name}
-                    </h2>
+                  <div className="p-4 flex justify-between items-center">
+                    <h2 className="text-lg font-bold mb-2">{category.name}</h2>
                     <p className="text-xl text-purple-500 hover:bg-slate-200 p-2 hover:rounded-full">
                       <FaArrowCircleRight />
                     </p>

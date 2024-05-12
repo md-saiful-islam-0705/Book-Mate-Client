@@ -92,7 +92,7 @@ const AddBook = () => {
   return (
     <>
       <Navbar />
-      <div className="mx-auto border lg:w-1/3 w-full p-3  rounded-md mb-10 shadow">
+      <div className="mx-auto border lg:w-2/3 w-full p-3  rounded-md mb-10 shadow">
         <h2 className="text-3xl text-center font-bold mb-4">Add Book</h2>
         <form
           className="mx-auto bg-gradient-to-br from-blue-500 to-purple-500 p-4 lg:p-7 md:p-5 shadow-lg rounded-lg"

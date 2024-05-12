@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Reveal } from "react-awesome-reveal";
-import { FaArrowCircleRight, FaBook } from "react-icons/fa";
+import { FaBook } from "react-icons/fa";
 import { TbHandClick } from "react-icons/tb";
+import axios from "axios";
+
 
 const PopularBooks = () => {
   const [popularBooks, setPopularBooks] = useState([]);
@@ -14,16 +16,11 @@ const PopularBooks = () => {
   }, []);
 
   const fetchPopularBooks = async () => {
-    const response = await fetch("http://localhost:3001/popularBooks");
-    if (!response.ok) {
-      throw new Error("Failed to fetch Popular books data");
-    }
-    const data = await response.json();
-    setPopularBooks(data);
-    setLoading(false);
-    console.error("Error fetching popular books:", error);
-    setLoading(false);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/popularBooks`);
+      setPopularBooks(response.data);
+      setLoading(false);
   };
+  
 
   const handleBookClick = (book) => {
     setSelectedBook(book);
