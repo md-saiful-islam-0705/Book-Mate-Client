@@ -15,15 +15,11 @@ const SelectedBooks = () => {
   }, [category]);
 
   const fetchBooksByCategory = async () => {
-    try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/books?category=${category}`
       );
       setBooks(response.data);
       setLoading(false);
-    } catch (error) {
-      console.error("Error fetching books by category:", error);
-    }
   };
 
   return (
