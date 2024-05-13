@@ -51,7 +51,7 @@ const PopularBooks = () => {
                 alt={selectedBook.name}
                 className="w-50 h-40 rounded-md"
               />
-              <p>{selectedBook.description}</p>
+              <p className="text-gray-500" >{selectedBook.description}</p>
               <p className="text-purple-500">Author: {selectedBook.author}</p>
               <p className="text-gray-600 font-semibold">
                 Price: {selectedBook.price}
@@ -78,7 +78,7 @@ const PopularBooks = () => {
             </div>
           ) : (
             <div className=" flex justify-center gap-4 items-center pt-32 ">
-              <p className="text-xl font-semibold">
+              <p className="text-xl font-semibold text-black">
                 Click a <span className="text-pink-500">book</span> to view
                 details{" "}
               </p>
