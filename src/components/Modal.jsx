@@ -60,7 +60,7 @@ const Modal = ({
         <form onSubmit={handleSubmit} method="dialog">
           <button
             type="button"
-            className="btn btn-sm bg-red-500 text-white btn-ghost absolute right-1 top-1"
+            className="btn btn-sm bg-red-500 rounded-3xl  text-white btn-ghost absolute right-1 top-1"
             onClick={handleClose}
           >
             ✕
