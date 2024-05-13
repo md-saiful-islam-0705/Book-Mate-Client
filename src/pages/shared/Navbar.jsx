@@ -3,8 +3,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import userDefaultPic from "../../assets/user.png";
 import { GiBookCover } from "react-icons/gi";
+import DarkModeToggle from "../../components/DarkModeToggle";
 
-const Navbar = () => {
+const Navbar = ({ darkMode, setDarkMode }) => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleSignOut = () => {
@@ -64,7 +65,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 flex justify-between items-center py-4 ">
+    <div className="navbar flex justify-between items-center py-4 ">
       <div className="navbar-start">
         <div className="flex items-center">
           <div className="dropdown">
@@ -108,6 +109,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 gap-2">{navLinks}</ul>
       </div>
       <div className="navbar-end">
+      <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
         {user ? (
           <div className="flex items-center">
             <Link
@@ -134,7 +136,7 @@ const Navbar = () => {
             </Link>
             <button
               onClick={handleSignOut}
-              className="btn btn-sm btn-outline border-none ml-3"
+              className="btn btn-sm "
             >
               Sign Out
             </button>

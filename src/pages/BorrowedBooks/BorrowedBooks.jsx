@@ -50,8 +50,8 @@ const BorrowedBooks = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <h1 className="text-3xl font-bold my-4 text-center">Borrowed Books</h1>
-      <div className="flex-grow m-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:p-20 lg:m-0">
+      <h1 className="text-3xl font-bold text-center mb-4">Borrowed Books</h1>
+      <div className="flex-grow m-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6  lg:m-0">
         {borrowedBooks.map((book) => (
           <div
             className="card w-full h-[500px] border-2 glass flex flex-col shadow-md mx-auto transition-transform duration-800 transform hover:-translate-y-1 hover:shadow-xl"
@@ -77,15 +77,13 @@ const BorrowedBooks = () => {
                     <p>Borrowed</p>
                     <p>{new Date(book.borrowedDate).toLocaleDateString()}</p>
                   </div>
-                  <hr />
                   <div className="text-red-400 font-semibold flex justify-between items-center">
                     <p>Return</p>
                     <p>{new Date(book.returnDate).toLocaleDateString()}</p>
                   </div>
-                  <hr />
                 </div>
                 <button
-                  className="btn btn-sm btn-outline w-full my-2"
+                  className="btn btn-outline my-1"
                   onClick={() => handleReturnBook(book._id)}
                 >
                   Return

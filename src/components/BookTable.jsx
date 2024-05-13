@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const BookTable = ({ books }) => {
   return (
-    <div className=" container mx-auto overflow-x-auto md:overflow-x-visible lg:overflow-x-visible m-5">
+    <div className=" w-full border border-purple-100 container mx-auto overflow-x-auto md:overflow-x-visible lg:overflow-x-visible m-5">
       <table className=" w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>

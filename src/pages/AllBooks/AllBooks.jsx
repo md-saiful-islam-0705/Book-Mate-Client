@@ -34,9 +34,9 @@ const AllBooks = () => {
       <Navbar />
       <div className="flex-grow m-2">
         <h1 className="text-3xl font-bold mt-4 text-center">All Books</h1>
-        <div className="flex justify-around items-center shadow rounded-xl p-4 mt-4">
+        <div className="flex justify-around border border-purple-50 items-center shadow rounded-xl p-4 mt-4">
           <button
-            className="btn btn-outline btn-md hover:border-none"
+            className="btn btn-outline rounded-full btn-md hover:border-none"
             onClick={() => setShowAvailable(!showAvailable)}
           >
             {showAvailable ? "Show All Books" : "Show Available Books"}
@@ -47,7 +47,7 @@ const AllBooks = () => {
           </div>
           <div className="">
             <select
-              className="form-select p-3  rounded-lg btn btn-outline "
+              className="form-select p-3  rounded-full btn btn-outline "
               value={viewType}
               onChange={(e) => setViewType(e.target.value)}
             >
@@ -57,19 +57,17 @@ const AllBooks = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:p-20 lg:m-0">
-          {loading ? (
-            <div className="flex justify-center space-x-4 my-8">
-              <span className="loading loading-spinner text-primary"></span>
-              <span className="loading loading-spinner text-secondary"></span>
-              <span className="loading loading-spinner text-accent"></span>
-            </div>
-          ) : viewType === "card" ? (
-            filteredBooks.map((book) => <BookCard key={book._id} book={book} />)
-          ) : (
-            <BookTable books={filteredBooks} />
-          )}
-        </div>
+        <div className="mx-auto my-8">
+            {viewType === "card" ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:m-0">
+                {filteredBooks.map((book) => (
+                  <BookCard key={book._id} book={book} />
+                ))}
+              </div>
+            ) : (
+              <BookTable books={filteredBooks} />
+            )}
+          </div>
       </div>
       <Footer />
     </div>
