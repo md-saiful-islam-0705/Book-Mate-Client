@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Modal = ({
   isOpen,
@@ -11,6 +12,7 @@ const Modal = ({
   bookImage,
   bookCategory,
 }) => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [returnDate, setReturnDate] = useState("");
   const [borrowedDate, setBorrowedDate] = useState("");
@@ -19,11 +21,18 @@ const Modal = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const currentDate = new Date();
+    const borrowedDateObj = new Date(borrowedDate);
     const returnDateObj = new Date(returnDate);
-    // return date can't be earlier than current date
-    if (returnDateObj <= currentDate) {
+
+    // Return date can't be earlier than borrowed date
+    if (!returnDate || returnDateObj < borrowedDateObj) {
       setIsLoading(false);
+      Swal.fire({
+        title: "Error!",
+        text: "Return date cannot be earlier than the borrowed date.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
       return;
     }
 
@@ -46,6 +55,7 @@ const Modal = ({
       icon: "success",
       confirmButtonText: "OK",
     });
+    navigate("/borrowedBooks");
     setIsLoading(false);
     handleClose();
   };

@@ -43,14 +43,18 @@ const BorrowedBooks = () => {
     });
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
+  
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <h1 className="text-3xl font-bold text-center mb-4">Borrowed Books</h1>
+      {isLoading ? (
+        <div className="flex justify-center space-x-4 my-8">
+          <span className="loading loading-spinner text-primary"></span>
+          <span className="loading loading-spinner text-secondary"></span>
+          <span className="loading loading-spinner text-accent"></span>
+        </div>
+      ) : (
       <div className="flex-grow m-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6  lg:m-0">
         {borrowedBooks.map((book) => (
           <div
@@ -93,6 +97,7 @@ const BorrowedBooks = () => {
           </div>
         ))}
       </div>
+      )}
       <Footer />
     </div>
   );

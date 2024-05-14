@@ -46,21 +46,6 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           Borrowed Books
         </NavLink>
       </li>
-      {/* <li>
-        <NavLink to="/register" activeClassName="font-bold text-indigo-600">
-          Register
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/login" activeClassName="font-bold text-indigo-600">
-          Login
-        </NavLink>
-      </li> */}
-      {/* <li>
-        <NavLink to="/about" activeClassName="font-bold text-indigo-600">
-          About
-        </NavLink>
-      </li> */}
     </>
   );
 
@@ -87,7 +72,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 gap-1 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 gap-1 shadow-xl border border-purple-600 rounded-box w-52"
             >
               {navLinks}
             </ul>
