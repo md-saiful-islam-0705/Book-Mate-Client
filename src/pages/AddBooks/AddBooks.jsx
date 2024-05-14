@@ -3,8 +3,10 @@ import Navbar from "../shared/Navbar";
 import Footer from "../shared/Footer";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     image: "",
     name: "",
@@ -40,6 +42,7 @@ const AddBook = () => {
         icon: "success",
         confirmButtonText: "OK",
       });
+      navigate('/allBooks')
       // Reset
       setFormData({
         image: "",

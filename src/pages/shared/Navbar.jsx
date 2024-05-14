@@ -46,7 +46,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           Borrowed Books
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/register" activeClassName="font-bold text-indigo-600">
           Register
         </NavLink>
@@ -55,7 +55,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         <NavLink to="/login" activeClassName="font-bold text-indigo-600">
           Login
         </NavLink>
-      </li>
+      </li> */}
       {/* <li>
         <NavLink to="/about" activeClassName="font-bold text-indigo-600">
           About

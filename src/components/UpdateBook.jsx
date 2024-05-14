@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Navbar from "../pages/shared/Navbar";
@@ -7,6 +7,7 @@ import Footer from "../pages/shared/Footer";
 
 const UpdateBook = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [bookData, setBookData] = useState({
     image: "",
     name: "",
@@ -31,7 +32,7 @@ const UpdateBook = () => {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/books/${id}`
       );
-      console.log("Fetched book data:", response.data);
+      console.log("Fetched book data");
       setBookData(response.data);
     };
 
@@ -50,29 +51,24 @@ const UpdateBook = () => {
       rating: event.target.rating.value,
       description: event.target.description.value,
     };
+
     const response = await axios.put(
       `${import.meta.env.VITE_API_URL}/books/${id}`,
       updatedBookData
     );
-    if (response.data.message) {
-      Swal.fire({
-        icon: "success",
-        title: "Success!",
-        text: "Book updated successfully",
-      });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "Failed to update book",
-      });
-    }
+    Swal.fire({
+      title: "Success!",
+      text: "Book updated successfully.",
+      icon: "success",
+      confirmButtonText: "OK",
+    });
+    navigate("/allBooks");
   };
 
   return (
     <>
       <Navbar />
-      <div className="mx-auto lg:w-1/3 w-full  my-9 border rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 p-7">
+      <div className="mx-auto lg:w-2/3 w-full  my-9 border rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 p-7">
         <h2 className="text-3xl text-center text-gray-100 font-bold mb-6">
           Update Book
         </h2>
@@ -127,7 +123,7 @@ const UpdateBook = () => {
                 Category:
                 <select
                   name="category"
-                  defaultValue={bookData.category}
+                  value={bookData.category}
                   className="form-select p-4 mt-1 block w-full rounded-md"
                 >
                   <option value="">Select Category</option>
